@@ -191,3 +191,110 @@ def mostrar_estadisticas(paises):
     for continente in conteo:
         print(f"Continente: {continente} | Cantidad de paises: {conteo[continente]}.")
     print('=================================================\n')
+
+#Menú
+
+def ejecutar_menu():
+    #Se carga el dataset una vez que se de inicio al programa
+    archivo_base = "paises.csv"
+
+    paises_sistema = archivo_csv_leer(archivo_base)
+
+    if not paises_sistema:
+        print ("No se encontraron países cargados, verifique el archivo CSV.")
+
+    while True:
+        print ("\n=== SISTEMA DE GESTIÓN DE PAÍSES ===")
+        print ("1. Agregar país")
+        print ("2. Actualizar población y superficie de un país")
+        print ("3. Buscar un país por nombre")
+        print ("4. Filtrar países")
+        print ("5. Ordenar países")
+        print ("6. Mostrar estadísticas globales")
+        print ("7. Salir del sistema")
+
+        opcion = input ("Por favor, seleccione una opción (1-7): ").strip()
+
+        if opcion == "1":
+            print ("\n--- AGREGAR PAÍS ---")
+            nombre = input ("Ingrese el nombre del país: ")
+            continente = input ("Ingrese el continente del país: ")
+        
+            try:
+                poblacion = int(input("Ingrese la población del país (habitantes): "))
+                superficie = int(input("Ingrese la superficie del país (km2): "))
+                agregar_pais (paises_sistema, nombre, poblacion, superficie, continente)
+            
+            except ValueError:
+                print ("La población y la superficie deben ser números enteros válidos.")
+    
+        elif opcion == "2":
+            print ("\n--- ACTUALIZAR POBLACIÓN Y SUPERFICIE DE UN PAÍS ---")
+            nombre = input ("Ingrese el nombre del país a modificar: ")
+            
+            try:
+                nueva_pob = int(input("Ingrese el numero actualizado sobre la población del país (habitantes): "))
+                nueva_sup = int(input("Ingrese la superficie actualizada del país (km2): "))
+                actualizar_pais (paises_sistema, nombre, nueva_pob, nueva_sup)
+            
+            except ValueError:
+                print ("La población y la superficie deben ser números enteros válidos.")
+
+        elif opcion == "3":
+            print ("\n--- BUSCAR PAÍS POR NOMBRE ---")
+            termino = input ("Ingrese el nombre (o parte del nombre) a buscar: ")
+            buscar_paises_por_nombre (termino, paises_sistema)
+        
+        elif opcion == "4":
+            print ("\n--- FILTRAR PAÍSES ---")
+            print ("a. Por Continente")
+            print ("b. Por rango de Población")
+            print ("c. Por rango de Superficie")
+            sub_opcion = input ("Seleccione la opción deseada (a, b, c): ").lower().strip()
+
+            if sub_opcion == "a":
+                cont = input ("Ingrese el continente: ")
+                filtrar_paises_por_continente (cont, paises_sistema)
+            
+            elif sub_opcion in ["b", "c"]:
+                campo = "poblacion" if sub_opcion == "b" else "superficie"
+                try:
+                    minimo = int(input(f"Ingrese valor MÍNIMO de {campo}: "))
+                    maximo = int(input(f"Ingrese valor MÁXIMO de {campo}: "))
+                    filtrar_por_rango (minimo, maximo, campo, paises_sistema)
+                
+                except ValueError:
+                    print ("Los rangos deben ser números enteros.")
+                
+            else:
+                print ("Opción de filtro no válida.")
+
+        elif opcion == "5":
+            print ("\n--- ORDENAR PAÍSES ---")
+            print ("1. Ordenar por Nombre")
+            print ("2. Ordenar por Población")
+            print ("3. Ordenar por Superficie")
+            crit_idx = input ("Seleccione el criterio de ordenamiento deseado (1 al 3): ").strip()
+            criterios = {"1": "nombre", "2": "poblacion", "3": "superficie"}
+
+            if crit_idx in criterios:
+                sentido = input ("¿Quiere que el orden sea 'ascendente' o 'descendente'?: ").lower().strip()
+                categoria_elegida = criterios [crit_idx]
+                ordenar_paises (categoria_elegida, sentido, paises_sistema)
+            
+            else:
+                print ("Criterio no válido.")
+
+        elif opcion == "6":
+            print("\n--- ESTADÍSTICAS GLOBALES ---")
+            mostrar_estadisticas(paises_sistema)
+
+        elif opcion == "7":
+            print("\n ¡Gracias por usar el sistema! Saliendo...")
+            break
+        
+        else:
+            print ("Opción invalida, debe elegir entre un número del 1 al 7.")
+
+if __name__ == "__main__":
+    ejecutar_menu()

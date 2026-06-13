@@ -290,7 +290,8 @@ def ejecutar_menu():
             mostrar_estadisticas(paises_sistema)
 
         elif opcion == "7":
-            print("\n ¡Gracias por usar el sistema! Saliendo...")
+            print("\n ¡Gracias por usar el sistema!")
+            print("\n Sistema Cerrado.")
             break
         
         else:

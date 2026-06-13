@@ -222,7 +222,7 @@ def ejecutar_menu():
         
             try:
                 poblacion = int(input("Ingrese la población del país (habitantes): "))
-                superficie = int(input("Ingrese la superficie del país (km2): "))
+                superficie = int(input("Ingrese la superficie del país (Km²): "))
                 agregar_pais (paises_sistema, nombre, poblacion, superficie, continente)
             
             except ValueError:
@@ -234,7 +234,7 @@ def ejecutar_menu():
             
             try:
                 nueva_pob = int(input("Ingrese el numero actualizado sobre la población del país (habitantes): "))
-                nueva_sup = int(input("Ingrese la superficie actualizada del país (km2): "))
+                nueva_sup = int(input("Ingrese la superficie actualizada del país (Km²): "))
                 actualizar_pais (paises_sistema, nombre, nueva_pob, nueva_sup)
             
             except ValueError:

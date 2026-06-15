@@ -7,6 +7,7 @@ Este proyecto es un Trabajo Práctico Integrador (TPI) desarrollado para la mate
 ## Intengrantes y Participación
 
 **Ivan Ezequias Cardozo / Integrante A:** Desarrolló la lógica de carga de datos mediante la lectura del archivo CSV (incluyendo el manejo robusto de excepciones y validaciones), el diseño del menú principal interactivo, y las funciones fundamentales para agregar nuevos países y actualizar sus registros numéricos.
+
 **Ivan Cukla / Intengrante B:** Desarrolló el motor de búsqueda por coincidencia parcial, los algoritmos de filtrado (por continente y rangos numéricos), los ordenamientos dinámicos (ascendente/descendente) y el módulo de cálculo de estadísticas globales (máximos, mínimos y promedios).
 
 ## Ejemplos de Entradas y Salidas

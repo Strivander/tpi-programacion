@@ -50,7 +50,7 @@ Este proyecto no requiere la instalación de librerías externas de terceros, ya
 
 1. **Clonar el repositorio** en tu máquina local mediante Git:
     ```bash
-    git clone [URL_Repositorio]
+    git clone [https://github.com/Strivander/tpi-programacion.git]
     ```
 
 2. Asegurarse de tener instalado **Python 3.x** en el sistema.

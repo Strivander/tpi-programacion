@@ -243,7 +243,9 @@ def ejecutar_menu():
         elif opcion == "3":
             print ("\n--- BUSCAR PAÍS POR NOMBRE ---")
             termino = input ("Ingrese el nombre (o parte del nombre) a buscar: ")
-            buscar_paises_por_nombre (termino, paises_sistema)
+            encontrado = buscar_paises_por_nombre (termino, paises_sistema)
+            if encontrado:
+                print(f"{encontrado['nombre']} [ Poblacion: {encontrado['poblacion']} habitantes | Superficie: {encontrado['superficie']} Km2 | Continente: {encontrado['continente']}]")
         
         elif opcion == "4":
             print ("\n--- FILTRAR PAÍSES ---")
